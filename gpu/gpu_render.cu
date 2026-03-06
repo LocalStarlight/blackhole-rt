@@ -271,9 +271,9 @@ bool gpu_render(const GPUSceneParams &params, GPUPixelResult *host_results)
     int device = 0;
     cudaDeviceProp prop;
     CUDA_CHECK(cudaGetDeviceProperties(&prop, device));
-    printf("GPU: %s (compute %d.%d, %d SMs, %.0f MHz)\n",
+    printf("GPU: %s (compute %d.%d, %d SMs)\n",
            prop.name, prop.major, prop.minor,
-           prop.multiProcessorCount, prop.clockRate / 1000.0);
+           prop.multiProcessorCount);
     printf("GPU memory: %.0f MB total, bh_real-precision throughput: %s\n",
            prop.totalGlobalMem / (1024.0 * 1024.0),
            (prop.major >= 8) ? "good (Ampere+)" : (prop.major >= 7) ? "decent (Volta+)"
